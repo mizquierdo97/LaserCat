@@ -14,6 +14,7 @@ public class RayScript : MonoBehaviour {
 	public Vector3 startPosition;
 	Vector3 rayDirection = new Vector3(1,0,0);
 	public bool reflect = false;
+	public bool is_generator = false;
 	GameObject collision_object = null;
 	void Start()
 	{
@@ -30,30 +31,38 @@ public class RayScript : MonoBehaviour {
 
 	void Update()
 	{
+		if (is_generator)
+			startPosition = transform.position;
 		if (reflect) {
 			line.enabled = true;
 
 			ray.direction = rayDirection;
-			int layerMask = 7 << 8;
+			int mirrorMask = 1 << 8;
+			int wallMask =1 << 9;
 			RaycastHit hit;
 			// Does the ray intersect any objects excluding the player layer
-			if (Physics.Raycast (startPosition, rayDirection, out hit, Mathf.Infinity, layerMask)) {
+			if (Physics.Raycast (startPosition, rayDirection, out hit, Mathf.Infinity, mirrorMask)) {
 				Range = hit.distance;
 				collision_object = hit.collider.gameObject;
 				RayScript ray_script = collision_object.GetComponent<RayScript> ();
 				ray_script.startPosition = hit.point;
 				ray_script.rayDirection = Vector3.Reflect (rayDirection, hit.normal);
 				ray_script.reflect = true;
-			} else {
-				Range = MaxRange;
+			}
+			else if (Physics.Raycast (startPosition, rayDirection, out hit, Mathf.Infinity, wallMask)) {
+				Range = hit.distance;
+
+			}
+			else {
+				Range = 10000;
 				if (collision_object != null) {
 					RayScript ray_script = collision_object.GetComponent<RayScript> ();
 					ray_script.reflect = false;
 				}
 			}	
 
-			line.SetPosition (0, transform.position);
-			line.SetPosition (1, transform.position + rayDirection * Range);
+			line.SetPosition (0, startPosition);
+			line.SetPosition (1, startPosition + rayDirection * Range);
 
 		}
 
