@@ -34,10 +34,9 @@ public class RayScript : MonoBehaviour {
     void Start()
 	{
 		startPosition = new Vector3 (0, 0, 0);
-		lineMaterial = GetComponent<Material> ();
+
 		line = GetComponent<LineRenderer>();
-		line.positionCount = 2;
-		line.material = lineMaterial;
+		line.positionCount = 2;		
 		line.startWidth = 0.25f;
 		line.endWidth = 0.25f;
 		//line.enabled = false;
