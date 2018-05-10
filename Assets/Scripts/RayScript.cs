@@ -37,8 +37,8 @@ public class RayScript : MonoBehaviour {
 
 		line = GetComponent<LineRenderer>();
 		line.positionCount = 2;		
-		line.startWidth = 0.5f;
-		line.endWidth = 0.5f;
+		line.startWidth = 0.25f;
+		line.endWidth = 0.25f;
 		//line.enabled = false;
 
 	}
@@ -48,10 +48,8 @@ public class RayScript : MonoBehaviour {
        
         RestartValues();
       
-		if (is_generator) {
+        if (is_generator)
 			startPosition = transform.position;
-			rayDirection = transform.forward;
-		}
 		if (reflect) {
 			line.enabled = true;
 			ray.direction = rayDirection;
