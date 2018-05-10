@@ -37,8 +37,8 @@ public class RayScript : MonoBehaviour {
 
 		line = GetComponent<LineRenderer>();
 		line.positionCount = 2;		
-		line.startWidth = 2.0f;
-		line.endWidth = 2.0f;
+		line.startWidth = 0.1f;
+		line.endWidth = 0.1f;
 		//line.enabled = false;
 
 	}
