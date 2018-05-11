@@ -22,7 +22,7 @@ public class RayScript : MonoBehaviour {
 
 	GameObject collision_object = null;
     GameObject button_object = null;
-
+    GameObject receptor_object = null;
     public int reflect_count = 0;
 
     //LAYERS
@@ -69,6 +69,10 @@ public class RayScript : MonoBehaviour {
             if (Physics.Raycast(startPosition, rayDirection, out hit, Range, buttonMask))
             {
                 ButtonRay();
+            }
+            if (Physics.Raycast(startPosition, rayDirection, out hit, Range, receptorMask))
+            {
+                ReceptorRay();
             }
 
             line.SetPosition (0, startPosition);
@@ -122,5 +126,15 @@ public class RayScript : MonoBehaviour {
     void WallRay()
     {
         Range = hit.distance;
+    }
+
+    void ReceptorRay()
+    {
+        Range = hit.distance;
+        receptor_object = hit.collider.gameObject;
+        ReceptorScript receptor_script = receptor_object.GetComponent<ReceptorScript>();
+        receptor_script.ChangeScene();
+
+
     }
 }
