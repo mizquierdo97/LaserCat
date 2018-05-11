@@ -37,8 +37,8 @@ public class RayScript : MonoBehaviour {
 
 		line = GetComponent<LineRenderer>();
 		line.positionCount = 2;		
-		line.startWidth = 0.1f;
-		line.endWidth = 0.1f;
+		line.startWidth = 0.5f;
+		line.endWidth = 0.5f;
 		//line.enabled = false;
 
 	}
@@ -73,8 +73,9 @@ public class RayScript : MonoBehaviour {
 
             line.SetPosition (0, startPosition);
 			line.SetPosition (1, startPosition + rayDirection * Range);
-
-		}
+            line.material.mainTextureScale = new Vector2(Range/5, 1);
+            
+        }
 	   
 	
 	}
