@@ -54,8 +54,8 @@ public class RayScript : MonoBehaviour {
 		}
 		if (reflect) {
 			line.enabled = true;
-			ray.direction = rayDirection;
-
+			ray.direction = new Vector3(rayDirection.x,0, rayDirection.z);
+            ray.direction = ray.direction.normalized;
 	
             if (Physics.Raycast(startPosition, rayDirection, out hit, Mathf.Infinity, wallMask))
             {
@@ -109,6 +109,7 @@ public class RayScript : MonoBehaviour {
         {
             ray_script.startPosition = hit.point;
             ray_script.rayDirection = Vector3.Reflect(rayDirection, hit.normal);
+            ray_script.rayDirection = new Vector3(ray_script.rayDirection.x, 0, ray_script.rayDirection.z).normalized;
             ray_script.reflect = true;
             ray_script.reflect_count++;
         }
