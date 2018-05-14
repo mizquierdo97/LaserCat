@@ -16,6 +16,6 @@ public class StartGame : MonoBehaviour {
 
     public void ChangeLevel()
     {
-        SceneManager.LoadScene("Scene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Scene2", LoadSceneMode.Single);
     }
 }
