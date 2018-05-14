@@ -12,6 +12,7 @@ public class RayScript : MonoBehaviour {
 
 	LineRenderer line;
 	Material lineMaterial;
+    BoxCollider collider;
 
 	public Vector3 startPosition;
 	Vector3 rayDirection = new Vector3(1,0,0);
@@ -39,6 +40,7 @@ public class RayScript : MonoBehaviour {
 		line.positionCount = 2;		
 		line.startWidth = 0.5f;
 		line.endWidth = 0.5f;
+        collider = GetComponent<BoxCollider>();
 		//line.enabled = false;
 
 	}
@@ -86,6 +88,11 @@ public class RayScript : MonoBehaviour {
 
     void RestartValues()
     {
+        if (collider != null)
+        {
+          collider.enabled = true;
+
+        }
         line.enabled = false;
         reflect_count = 0;
         Range = 10000;
