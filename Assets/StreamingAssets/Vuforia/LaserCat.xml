@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Test1" size="10.000000 14.262820" />
-    <ImageTarget name="Mirror-3" size="10.000000 10.000000" />
-    <ImageTarget name="Mirror-2" size="10.000000 10.000000" />
-    <ImageTarget name="Map" size="1.000000 1.000000" />
-    <ImageTarget name="Mirror-1" size="1.000000 1.000000" />
+    <ImageTarget name="Mirror3" size="10.000000 10.000000" />
+    <ImageTarget name="Mirror2" size="10.000000 10.000000" />
+    <ImageTarget name="Mirror1" size="10.000000 10.000000" />
+    <ImageTarget name="Map" size="10.000000 10.000000" />
   </Tracking>
 </QCARConfig>
